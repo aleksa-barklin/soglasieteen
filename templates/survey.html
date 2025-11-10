@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Опрос</h2>
+<form method="post">
+  {% for i in range(1,6) %}
+    <p>Вопрос {{ i }}: пример вопроса {{ i }}</p>
+    <label><input type="radio" name="q{{ i }}" value="a" required> Ответ A (правильный)</label><br>
+    <label><input type="radio" name="q{{ i }}" value="b"> Ответ B</label><br>
+  {% endfor %}
+  <button type="submit">Отправить</button>
+</form>
+{% endblock %}

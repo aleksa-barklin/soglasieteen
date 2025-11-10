@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Личный кабинет {{ username }}</h2>
+{% if results %}
+  <table border="1">
+    <tr><th>Дата</th><th>Результат</th></tr>
+    {% for r in results %}
+      <tr><td>{{ r[1] }}</td><td>{{ r[0] }}/5</td></tr>
+    {% endfor %}
+  </table>
+{% else %}
+  <p>Вы ещё не проходили опрос.</p>
+{% endif %}
+{% endblock %}

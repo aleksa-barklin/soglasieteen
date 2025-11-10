@@ -1,0 +1,22 @@
+import sqlite3
+
+conn = sqlite3.connect("database.db")
+cursor = conn.cursor()
+
+# показать список таблиц
+cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
+tables = cursor.fetchall()
+print("Таблицы:", tables)
+
+# выбрать данные из первой таблицы (пример)
+if tables:
+    table_name = tables[0][0]  # берём имя первой таблицы
+    print(f"\nПервые строки из таблицы '{table_name}':")
+    cursor.execute(f"SELECT * FROM {table_name} LIMIT 10;")
+    rows = cursor.fetchall()
+    for row in rows:
+        print(row)
+else:
+    print("В базе нет таблиц.")
+
+conn.close()

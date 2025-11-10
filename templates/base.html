@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>{{ title if title else "Опрос" }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<nav>
+  {% if session.username %}
+    <a href="/dashboard">Личный кабинет</a>
+    <a href="/survey">Пройти опрос</a>
+    <a href="/logout">Выйти</a>
+  {% else %}
+    <a href="/login">Войти</a>
+    <a href="/register">Регистрация</a>
+  {% endif %}
+</nav>
+<hr>
+{% block content %}{% endblock %}
+</body>
+</html>
